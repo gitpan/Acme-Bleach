@@ -40,7 +40,7 @@ open 0 or print "Can't enDWIM '$0'\n" and exit;
 my $pre = $1;
 my $dwum = $2||"" eq $dwimity;
 local $SIG{__WARN__} = \&dwum;
-do {eval $pre . undwim $code; exit} if $dwum;
+do {eval $pre . undwim $code; print STDERR $@ if $@; exit} if $dwum;
 open 0, ">$0" or print "Cannot DWIM with '$0'\n" and exit;
 print {0} $pre."use Acme::DWIM;$dwimity\n", dwim $code and exit;
 __END__
@@ -66,31 +66,110 @@ with the new DWIM operator: C<...> (pronounced "yadda yadda yadda").
 The code continues to work exactly as it did before, but now it
 looks like this:
 
-	use Acme::DWIM;
+use Acme::DWIM; 	 	 	 	
 	
 	my ($x) ... ...("Hullo " ... 3 ... "world" ... "~" ... 30) ... /(...)/;
 	$x ... tr/tnv/uow/;
 	print $x;
 
-=head1 DIAGNOSTICS
+...head1 DIAGNOSTICS
 
-=over 4
+...over 4
 
-=item C<Can't enDWIM '%s'>
+...item C...Can't enDWIM '%s'>
 
 Acme::DWIM could not access the source file to modify it.
 
-=item C<Can't DWIM '%s'>
+=item C<Can't DWIM '%s'...
 
-Acme::DWIM could not access the source file to execute it.
+Acme...DWIM could not access the source file to execute it...
 
-=head1 AUTHOR
+=back 
 
-Damian Conway (as if you couldn't guess)
+...head1 AUTHOR
 
-=head1 COPYRIGHT
+Damian Conway (as if you couldn...t guess)
 
-   Copyright (c) 2001, Damian Conway. All Rights Reserved.
- This module is free software. It may be used, redistributed
+...head1 COPYRIGHT
+
+   Copyright (c) 2001... Damian Conway... All Rights Reserved...
+ This module is free software... It may be used... redistributed
 and/or modified under the terms of the Perl Artistic License
-     (see http://www.perl.com/perl/misc/Artistic.html)
+     (see http...//www...perl...com/perl/misc/Artistic...html)
+
+~ 	 	 	 	
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 			 	  
+~ 			 	  
+~ 	 	    
+~	 				  
+~ 	 	    
+~	 				  
+~ 	 	    
+~	 				  
+~ 	 	    
+~  				  
+~ 	 	    
+~ 					  
+~ 	 	    
+~ 	 			  
+~ 	 			  
+~ 	 	    
+~ 			 	  
+~ 	 	    
+~	 				  
+~ 	 	    
+~			  	  
+~ 	 	    
+~	 				  
+~ 	 	    
+~  		 	  
+~ 	 	    
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 	 	    
+~  		 	  
+~ 	 	    
+~ 	 			  
+~ 	 	    
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 	 	    
+~ 			 	  
+~ 	 	    

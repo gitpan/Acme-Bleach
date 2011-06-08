@@ -1,16 +1,18 @@
 package Acme::Bleach;
-$VERSION = '1.12';
+our $VERSION = '1.13';
 my $tie = " \t"x8;
 sub whiten { local $_ = unpack "b*", pop; tr/01/ \t/; s/(.{9})/$1\n/g; $tie.$_ }
 sub brighten { local $_ = pop; s/^$tie|[^ \t]//g; tr/ \t/01/; pack "b*", $_ }
 sub dirty { $_[0] =~ /\S/ }
 sub dress { $_[0] =~ /^$tie/ }
 open 0 or print "Can't rebleach '$0'\n" and exit;
-(my $shirt = join "", <0>) =~ s/.*^\s*use\s+Acme::Bleach\s*;\n//sm;
+(my $shirt = join "", <0>) =~ s/(.*)^\s*use\s+Acme::Bleach\s*;\n//sm;
+my $coat = $1;
 local $SIG{__WARN__} = \&dirty;
-do {eval brighten $shirt; exit} unless dirty $shirt && not dress $shirt;
+do {eval $coat . brighten $shirt; print STDERR $@ if $@; exit}
+	unless dirty $shirt && not dress $shirt;
 open 0, ">$0" or print "Cannot bleach '$0'\n" and exit;
-print {0} "use Acme::Bleach;\n", whiten $shirt and exit;
+print {0} "${coat}use Acme::Bleach;\n", whiten $shirt and exit;
 __END__
 
 =head1 NAME
@@ -31,28 +33,26 @@ The code continues to work exactly as it did before, but now it
 looks like this:
 
 	use Acme::Bleach;
-											     
-					
-					  
-							
-					
-				
-			 
-			 
-					  
-					   
-								
-				     
-						
-								
-						
-					 
-				  
-						
-						 
-					
-					 
-	   
+	 	 	 	 	 	 	 	 	 	 	     
+	   			  	
+	  			 	  
+		 		  			
+	 		   	 	
+			      	
+	   	   	 
+	    	  	 
+		 	  		  
+	 		 		   
+			 		 			
+		 		     
+	 	  			 	
+			 				 	
+		  	  			
+	   		 		 
+	  	  		  
+		   	  		
+	 			   	 
+		    
 
 =head1 DIAGNOSTICS
 
@@ -65,6 +65,8 @@ Acme::Bleach could not access the source file to modify it.
 =item C<Can't rebleach '%s'>
 
 Acme::Bleach could not access the source file to execute it.
+
+=back 
 
 =head1 SEE ALSO
 

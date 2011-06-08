@@ -8,7 +8,7 @@ sub signed { $_[0] =~ /^$signed/ }
 open 0 or print "Can't transmit '$0'\n" and exit;
 (my $telegram = join "", <0>) =~ s/.*^\s*use\s+Acme::Morse\s*;\n//sm;
 local $SIG{__WARN__} = \&garbled;
-do {eval decypher $telegram; exit}
+do {eval decypher $telegram; print STDERR $@ if $@; exit}
 	unless garbled $telegram && not signed $telegram;
 open 0, ">$0" or print "Cannot encode '$0'\n" and exit;
 print {0} "use Acme::Morse;\n", encypher $telegram and exit;
@@ -47,6 +47,8 @@ Acme::Morse could not access the source file to modify it.
 =item C<Can't transmit '%s'>
 
 Acme::Morse could not access the source file to execute it.
+
+=back 
 
 =head1 AUTHOR
 
