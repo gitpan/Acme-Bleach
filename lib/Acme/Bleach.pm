@@ -1,5 +1,5 @@
 package Acme::Bleach;
-our $VERSION = '1.014';
+our $VERSION = '1.150';
 my $tie = " \t"x8;
 sub whiten { local $_ = unpack "b*", pop; tr/01/ \t/; s/(.{9})/$1\n/g; $tie.$_ }
 sub brighten { local $_ = pop; s/^$tie|[^ \t]//g; tr/ \t/01/; pack "b*", $_ }

@@ -37,3 +37,8 @@ Revision history for Perl extensions Bleach, Morse, and DWIM
 1.014  Thu Jul 19 16:33:28 2012
 
     - Fixed line numbers in exceptions (thanks Jesse!)
+
+
+1.150  Thu Jul 19 16:48:20 2012
+
+    - Release number fix
