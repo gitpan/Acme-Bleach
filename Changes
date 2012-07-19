@@ -25,7 +25,6 @@ Revision history for Perl extensions Bleach, Morse, and DWIM
     - Renamed module to Acme::Bleach
 
 
-
 1.13  Thu Jun  9 07:02:45 2011
 
     - Reinstated error messages within eval
@@ -33,3 +32,8 @@ Revision history for Perl extensions Bleach, Morse, and DWIM
     - Pod fixes (thanks nhandler)
 
     - Pod fixes (thanks Brock and DC.pm!)
+
+
+1.014  Thu Jul 19 16:33:28 2012
+
+    - Fixed line numbers in exceptions (thanks Jesse!)
